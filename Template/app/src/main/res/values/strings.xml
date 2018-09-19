@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SYM Template Activity</string>
+    <string name="email">E-mail</string>
+    <string name="psw">Password</string>
+    <string name="signin">Sign in</string>
+    <string name="wronglogin">Login failed</string>
+    <string name="wrong">Email or Password not recognized</string>
+    <string name="good">Valid login, welcome !</string>
+    <string name="err_mailOrPasswdIsNullOrEmpty">isValid(mail, passwd) - mail and passwd cannot be empty !</string>
+    <string name="err_invalidMail">isValid(mail, passwd) - mail must be a valid address !</string>
+    <string name="emailLabel">Email entered</string>
+    <string name="imeiLabel">n° IMEI</string>
+
+</resources>
