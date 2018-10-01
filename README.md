@@ -1,9 +1,34 @@
 # SYM_Labo1 - Réponses aux questions
 
+Auteurs: J.Châtillon, A.Rochat, B.Schopfer
+Date: 01.10.2018
+Template du rapport: J.Smith
+
 ## Question 1
 
 ```
-Comment organiser les textes pour obtenir une application multi-langues (français, allemand, italien, langue par défaut : anglais) ? Que se passe-t-il si une traduction est manquante dans la langue par défaut ou dans une langue supplémentaire ?
+Comment organiser les textes pour obtenir une application multi-langues (français, allemand, italien, langue par défaut : anglais) ?
+Que se passe-t-il si une traduction est manquante dans la langue par défaut ou dans une langue supplémentaire ?
+```
+
+Pour la langue par défaut, il faut créer un fichier *string.xml* dans le dossier *./res/values/*. Pour les autres langues, il faut créer le même fichier mais dans un autres dossier *./res/values-XX/* ou XX représente le code (sur 2 caractères) du language. Il est aussi possible de préciser la région ou d'utiliser un "BCP 47 language tag". (cf: https://developer.android.com/guide/topics/resources/providing-resources#AlternativeResources)
+Le fichier string.xml doit avoir la structure:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="refExemple">Text exmple</string>
+</resources>
+```
+
+On récupère la valeur depuis l'application en utilisant l'instruction:
+
+```java
+getResources().getString(R.string.refExemple); // depuis le java
+```
+
+```xml
+ <TextView android:text="@string/refExemple" /> 	// depuis l'xml
 ```
 
 
@@ -36,11 +61,29 @@ On pourrait imaginer une situation où cette seconde Activity fournit un résult
 ## Question 5
 
 ```
-Vous noterez que la méthode getDeviceId() du TelephonyManager, permettant d’obtenir
-l’IMEI du téléphone, est dépréciée depuis la version 26 de l’API. Veuillez discuter de ce que cela implique lors du développement et de présenter une façon d’en tenir compte avec un exemple de code.
+Vous noterez que la méthode getDeviceId() du TelephonyManager, permettant d’obtenir l’IMEI du téléphone, est dépréciée depuis la version 26 de l’API. Veuillez discuter de ce que cela implique lors du développement et de présenter une façon d’en tenir compte avec un exemple de code.
 ```
 
+Car elle ne fait pas la difference entre un device GSM ou CDMA. Il faut coder une version pour les 2.
 
+Si on veut le GSM id(IMEI), il faut utiliser *getImei()*:
+
+```java
+ @RequiresApi(api = Build.VERSION_CODES.O)
+ TelephonyManager tm = (TelephonyManager)
+            getSystemService(this.TELEPHONY_SERVICE);
+    String imei = tm.getImei();
+```
+
+Et si on veut CDMA id (MEID), il faut utiliser *getMeid()*:
+
+```java
+@RequiresApi(api = Build.VERSION_CODES.O)
+TelephonyManager tm = (TelephonyManager)
+            getSystemService(this.TELEPHONY_SERVICE);
+
+    String meid=tm.getMeid();
+```
 
 ## Question 6
 
