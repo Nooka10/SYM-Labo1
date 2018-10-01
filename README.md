@@ -6,22 +6,53 @@
 Comment organiser les textes pour obtenir une application multi-langues (français, allemand, italien, langue par défaut : anglais) ? Que se passe-t-il si une traduction est manquante dans la langue par défaut ou dans une langue supplémentaire ?
 ```
 
+Il ne faut jamais coder en dur du texte. Lorsqu'on souhaite afficher du texte dans l'application, il faut aller récupérer des textes dans le fichier *string.xml* de la langue souhaitée. Dans ce fichier chaque texte est désigné par un nom (identique pour toutes les langues). C'est ce nom qui est utilisé dans le code pour désigner le texte correspondant. Le texte associé à ce nom change d'une langue à l'autre.
 
+Dans une application multi-langues, on aura donc un fichier *string.xml* pour chaque langue supportée. Chaque fichier contiendra les mêmes balises, mais leur texte associé sera traduit.
+
+Par exemple, dans le fichier *string.xml* de la langue anglaise, on aura:
+
+<string name="YourPhone">Your Phone</string> 
+
+alors que dans celui de la langue francaise, on aura:
+
+<string name="YourPhone">Votre téléphone</string>
+
+Si une traduction est manquante dans une langue supplémentaire, alors le texte de la langue par défaut sera affichée. En revanche, le fichier *string.xml* de la langue par défaut doit être complet sans quoi l'application ne pourra pas compiler. En effet, toutes les string dont le nom est utilisé dans le code de l'application doivent se trouver dans le fichier *string.xml* utilisé par défaut. 
 
 ## Question 2
 
 ```
-Dans l’exemple fourni, sur le dialogue pop-up, nous affichons l’icône android. R.drawable.ic_dialog_alert , disponible dans le SDK Android mais qui n’est pas
-très bien adapté visuellement à notre utilisation. Nous souhaitons la remplacer avec notre propre icône, veuillez indiquer comment procéder. Dans quel(s) dossier(s) devons-nous ajouter cette image ? Décrivez brièvement la logique derrière la gestion des ressources de type « image » sur Android.
+Dans l’exemple fourni, sur le dialogue pop-up, nous affichons l’icône android. R.drawable.ic_dialog_alert , disponible dans le SDK Android mais qui n’est pas très bien adapté visuellement à notre utilisation. Nous souhaitons la remplacer avec notre propre icône, veuillez indiquer comment procéder. Dans quel(s) dossier(s) devons-nous ajouter cette image ? Décrivez brièvement la logique derrière la gestion des ressources de type « image » sur Android.
 ```
 
+Il faut ajouter l'icone que nous souhaitons utiliser dans le dossier *res/drawable*. Après cela, on remplace la ligne 
 
+```
+alertbd.setIcon(android.R.drawable.ic_dialog_alert);
+```
+
+par
+
+```
+alertbd.setIcon(R.drawable.ic_warning_black_24dp);
+```
+
+où *ic_warning_black_24dp* est le nom de l'icone.
+
+Dans Android Studio, le moyen le plus facile d'ajouter une icône est d'utiliser le menu File -> New -> Vector Asset. Le menu qui s'ouvre permet de choisir une icône personnalisée (à donner au format SVG ou PSD) ou de choisir une icône open source (*Clip ARt*) dans le style *Material Design*.
+
+
+
+PAS FINI!!
 
 ## Question 3
 
 ```
 Lorsque le login est réussi, vous êtes censé chaîner une autre Activity en utilisant un Intent. Si je presse le bouton "Back" de l'interface Android, que puis-je constater ? Comment faire pour que l'application se comporte de manière plus logique ? Veuillez discuter de la logique derrière les activités Android.
 ```
+
+Appuyer sur le bouton back "quitte" l'application (retour à l'écran d'accueil). La logique voudrait qu'appuyer sur retour nous déconnecte et nous ramène à la page de login.
 
 
 

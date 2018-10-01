@@ -26,6 +26,7 @@
 package ch.heigvd.sym.template;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -42,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     // Just for test purposes : please destroy !
-    private static final String[] validEmails = {"toto@tutu.com", "benoit@schopfer.ch", "antoine@rochat.ch"};
-    private static final String[] validPasswords = {"tata", "toto", "toinetoine"};
+    private static final String[] validEmails = {"toto@tutu.com", "benoit@schopfer.ch", "antoine@rochat.ch", "jeremie@chatillon.ch", "a@b.c"};
+    private static final String[] validPasswords = {"tata", "benben", "toinetoine", "jeje", "a"};
 
     // GUI elements
     private EditText email = null;
@@ -73,26 +74,14 @@ public class MainActivity extends AppCompatActivity {
                 String mail = email.getText().toString();
                 String passwd = password.getText().toString();
                 if (isValid(mail, passwd)) {
-                    /* Ok, valid combination, do something or launch another activity...
-                     * The current activity could be finished, but it is not mandatory.
-                     * To launch activity MyActivity.class, try something like :
-                     *
-                     * 			Intent intent = new Intent(this, ch.heigvd.sym.MyActivity.class);
-                     * 			intent.putExtra("emailEntered", mail);
-                     *			intent.putExtra("passwordGiven", passwd);
-                     *			this.startActivity(intent);
-                     *
-                     * Alternately, you could also startActivityForResult if you are awaiting a result.
-                     * In the latter case, you have to indicate an int parameter to identify MyActivity
-                     *
-                     * If you haven't anything more to do, you may finish()...
-                     * But just display a small message before quitting...
-                     */
+                    Intent intent = new Intent(MainActivity.this, SuccessLogin.class);
+                    intent.putExtra("emailEntered", mail);
+                    intent.putExtra("passwordGiven", passwd);
+                    startActivity(intent);
+
                     Toast.makeText(MainActivity.this, getResources().getString(R.string.good), Toast.LENGTH_LONG).show();
+
                     finish();
-                } else {
-                    // Wrong combination, display pop-up dialog and stay on login screen
-                    //showErrorDialog(mail, passwd);
                 }
             }
 
@@ -102,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean isValid(String mail, String passwd) {
         if (mail == null || passwd == null || mail.isEmpty() || passwd.isEmpty()) {
             Log.w(TAG, getResources().getString(R.string.err_mailOrPasswdIsNullOrEmpty));
-            Toast.makeText(MainActivity.this, getResources().getString(R.string.err_mailOrPasswdIsNullOrEmpty), Toast.LENGTH_LONG).show();
+            showErrorDialog(mail, passwd);
+            //Toast.makeText(MainActivity.this, getResources().getString(R.string.err_mailOrPasswdIsNullOrEmpty), Toast.LENGTH_LONG).show();
             return false;
         }
         if (!mail.matches("^([\\w\\-.]+)@((\\[([0-9]{1,3}\\.){3}[0-9]{1,3}])|(([\\w\\-]+\\.)+)([a-zA-Z]{2,4}))$")) {
@@ -113,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         // Return true if combination valid, false otherwise
         for (int i = 0; i < validEmails.length; i++) {
             if (mail.equals(validEmails[i])) { // mail valide
-                if (mail.equals(validPasswords[i])) { // password valide
+                if (passwd.equals(validPasswords[i])) { // password valide
                     return true; // login ok
                 }
                 break; // mail valide mais password invalide
@@ -131,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
          * Pop-up dialog to show error
          */
         AlertDialog.Builder alertbd = new AlertDialog.Builder(this);
-        alertbd.setIcon(android.R.drawable.ic_dialog_alert);
+        alertbd.setIcon(R.drawable.ic_warning_black_24dp);
         alertbd.setTitle(R.string.wronglogin);
         alertbd.setMessage(R.string.wrong);
         alertbd.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {

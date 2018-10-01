@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">SYM Template Activity</string>
+	<string name="email">E-mail</string>
+	<string name="psw">Mot de passe</string>
+	<string name="signin">Connection</string>
+	<string name="wronglogin">La connexion a échoué</string>
+	<!--<string name="wrong">Email or Password not recognized</string>-->
+	<string name="good">Login valides, bienvenue !</string>
+	<string name="err_mailOrPasswdIsNullOrEmpty">isValid(mail, passwd) - l\'email et le mot de passe ne peuvent pas etre vides !</string>
+	<string name="err_invalidMail">isValid(mail, passwd) - l\'email doit être une adresse valide!</string>
+	<string name="emailLabel">Email entré</string>
+	<string name="imeiLabel">n° IMEI</string>
+	<string name="title_activity_success_login">Connecté</string>
+	<string name="permissionNotGranted">Accès au numéro IMEI non autorisé par l\'utilisateur!</string>
+
+	<!-- Strings related to login -->
+	<string name="prompt_email">Email</string>
+	<string name="prompt_password">Mot de passe (optionnel)</string>
+	<string name="action_sign_in">Connection ou inscription</string>
+	<string name="action_sign_in_short">Se connecter</string>
+	<string name="error_invalid_email">Cet adresse email est invalide</string>
+	<string name="error_invalid_password">Ce mot de passe est trop court</string>
+	<string name="error_incorrect_password">Ce mot de passe est incorrect</string>
+	<string name="error_field_required">Ce champ est obligatoire</string>
+	<string name="permission_rationale">"L'autorisation d'accéder aux contacts est requise pour proposer l'autocomplétion de l\'email."</string>
+
+</resources>

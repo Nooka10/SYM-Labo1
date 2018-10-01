@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SuccessLogin">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="148dp"
+        app:layout_constraintBottom_toTopOf="@+id/emailLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/emailLabel"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="@string/emailLabel"
+        app:layout_constraintBottom_toTopOf="@+id/emailTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_marginBottom="26dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/imeiLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailLabel" />
+
+    <TextView
+        android:id="@+id/imeiLabel"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="26dp"
+        android:text="@string/imeiLabel"
+        app:layout_constraintBottom_toTopOf="@+id/imeiTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
+
+    <TextView
+        android:id="@+id/imeiTextView"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="175dp"
+        android:text="@string/permissionNotGranted"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imeiLabel" />
+
+</android.support.constraint.ConstraintLayout>
