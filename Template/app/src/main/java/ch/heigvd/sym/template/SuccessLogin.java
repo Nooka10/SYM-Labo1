@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,31 @@ public class SuccessLogin extends AppCompatActivity {
 	private ImageView imageView = null;
 	private TextView emailTextView = null;
 	private TextView imeiTextView = null;
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+	
+	@Override
+	protected void onStop() {
+		super.onStop();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +91,13 @@ public class SuccessLogin extends AppCompatActivity {
 							if (permission.getPermissionName().equals(Manifest.permission.READ_PHONE_STATE)) {
 								// autorisation de l'accès aux infos du téléphone accordée -> on modifie l'imei
 								TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-								imeiTextView.setText(telephonyManager.getDeviceId());
+								if (telephonyManager != null) {
+									if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+										imeiTextView.setText(telephonyManager.getImei());
+									} else {
+										imeiTextView.setText(telephonyManager.getDeviceId());
+									}
+								}
 							}
 						}
 					}
@@ -76,7 +108,6 @@ public class SuccessLogin extends AppCompatActivity {
 					}
 					
 				}).onSameThread().check();
-		
 		emailTextView.setText(emailEntered);
 	}
 }

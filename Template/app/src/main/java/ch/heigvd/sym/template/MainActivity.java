@@ -43,15 +43,40 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     // Just for test purposes : please destroy !
-    private static final String[] validEmails = {"toto@tutu.com", "benoit@schopfer.ch", "antoine@rochat.ch", "jeremie@chatillon.ch", "a@b.c"};
-    private static final String[] validPasswords = {"tata", "benben", "toinetoine", "jeje", "a"};
+    private static final String[] validEmails = {"a@a.aa", "toto@tutu.com", "benoit@schopfer.ch", "antoine@rochat.ch", "jeremie@chatillon.ch"};
+    private static final String[] validPasswords = {"a", "tata", "benben", "toinetoine", "jeje"};
 
     // GUI elements
     private EditText email = null;
     private EditText password = null;
     private Button signIn = null;
-
-    @Override
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+	
+	@Override
+	protected void onStop() {
+		super.onStop();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+	
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Show the welcome screen / login authentication dialog

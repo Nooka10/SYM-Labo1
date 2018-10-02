@@ -6,7 +6,7 @@
 	<string name="psw">Mot de passe</string>
 	<string name="signin">Connection</string>
 	<string name="wronglogin">La connexion a échoué</string>
-	<!--<string name="wrong">Email or Password not recognized</string>-->
+	<string name="wrong">Email ou mot de passe non reconnu!</string>
 	<string name="good">Login valides, bienvenue !</string>
 	<string name="err_mailOrPasswdIsNullOrEmpty">isValid(mail, passwd) - l\'email et le mot de passe ne peuvent pas etre vides !</string>
 	<string name="err_invalidMail">isValid(mail, passwd) - l\'email doit être une adresse valide!</string>
