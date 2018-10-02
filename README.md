@@ -11,7 +11,9 @@ Comment organiser les textes pour obtenir une application multi-langues (frança
 Que se passe-t-il si une traduction est manquante dans la langue par défaut ou dans une langue supplémentaire ?
 ```
 
-Pour la langue par défaut, il faut créer un fichier *string.xml* dans le dossier *./res/values/*. Pour les autres langues, il faut créer le même fichier mais dans un autres dossier *./res/values-XX/* ou XX représente le code (sur 2 caractères) du language. Il est aussi possible de préciser la région ou d'utiliser un "BCP 47 language tag". (cf: https://developer.android.com/guide/topics/resources/providing-resources#AlternativeResources)
+Il ne faut jamais coder en dur du texte.  Lorsqu'on souhaite afficher du texte dans l'application, il faut aller récupérer des textes dans le fichier *strings.xml* de la langue souhaitée.
+
+Pour la langue par défaut, il faut créer un fichier *strings.xml* dans le dossier *./res/values/*. Pour les autres langues, il faut créer le même fichier mais dans un autres dossier *./res/values-XX/* ou XX représente le code (sur 2 caractères) du language. Il est aussi possible de préciser la région ou d'utiliser un "BCP 47 language tag". (cf: https://developer.android.com/guide/topics/resources/providing-resources#AlternativeResources)
 Le fichier string.xml doit avoir la structure:
 
 ```xml
@@ -30,18 +32,6 @@ getResources().getString(R.string.refExemple); // depuis le java
 ```xml
  <TextView android:text="@string/refExemple" /> 	// depuis l'xml
 ```
-
-Il ne faut jamais coder en dur du texte. Lorsqu'on souhaite afficher du texte dans l'application, il faut aller récupérer des textes dans le fichier *string.xml* de la langue souhaitée. Dans ce fichier chaque texte est désigné par un nom (identique pour toutes les langues). C'est ce nom qui est utilisé dans le code pour désigner le texte correspondant. Le texte associé à ce nom change d'une langue à l'autre.
-
-Dans une application multi-langues, on aura donc un fichier *string.xml* pour chaque langue supportée. Chaque fichier contiendra les mêmes balises, mais leur texte associé sera traduit.
-
-Par exemple, dans le fichier *string.xml* de la langue anglaise, on aura:
-
-<string name="YourPhone">Your Phone</string> 
-
-alors que dans celui de la langue francaise, on aura:
-
-<string name="YourPhone">Votre téléphone</string>
 
 Si une traduction est manquante dans une langue supplémentaire, alors le texte de la langue par défaut sera affichée. En revanche, le fichier *string.xml* de la langue par défaut doit être complet sans quoi l'application ne pourra pas compiler. En effet, toutes les string dont le nom est utilisé dans le code de l'application doivent se trouver dans le fichier *string.xml* utilisé par défaut. 
 
@@ -69,6 +59,10 @@ Dans Android Studio, le moyen le plus facile d'ajouter une icône est d'utiliser
 
 
 
+Pour les images par défaut, il faut créer le dossier *./res/drawable/* et mettrel'image dedan. Puis il faudrait créer un dossier pour chacune des résolutions avec cette même image.
+
+![1538473153089](C:\Users\basilechatillon\AppData\Roaming\Typora\typora-user-images\1538473153089.png)
+
 PAS FINI!!
 
 ## Question 3
@@ -79,7 +73,7 @@ Lorsque le login est réussi, vous êtes censé chaîner une autre Activity en u
 
 Appuyer sur le bouton back "quitte" l'application (retour à l'écran d'accueil). La logique voudrait qu'appuyer sur retour nous déconnecte et nous ramène à la page de login.
 
-
+https://developer.android.com/training/implementing-navigation/temporal
 
 ## Question 4
 
