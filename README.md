@@ -33,7 +33,7 @@ getResources().getString(R.string.refExemple); // depuis le java
  <TextView android:text="@string/refExemple" /> 	// depuis l'xml
 ```
 
-Si une traduction est manquante dans une langue supplémentaire, alors le texte de la langue par défaut sera affichée. En revanche, le fichier *string.xml* de la langue par défaut doit être complet sans quoi l'application ne pourra pas compiler. En effet, toutes les string dont le nom est utilisé dans le code de l'application doivent se trouver dans le fichier *string.xml* utilisé par défaut. 
+Si une traduction est manquante dans une langue supplémentaire, alors le texte de la langue par défaut sera affichée. En revanche, le fichier *string.xml* de la langue par défaut doit être complet sans quoi l'application ne pourra pas compiler. 
 
 ## Question 2
 
@@ -57,6 +57,7 @@ où *ic_warning_black_24dp* est le nom de l'icone.
 
 Dans Android Studio, le moyen le plus facile d'ajouter une icône est d'utiliser le menu File -> New -> Vector Asset. Le menu qui s'ouvre permet de choisir une icône personnalisée (à donner au format SVG ou PSD) ou de choisir une icône open source (*Clip ARt*) dans le style *Material Design*.
 
+Dans le dossier dra
 
 Pour les images par défaut, il faut créer le dossier *./res/drawable/* et mettre l'image dedans. Puis il faudrait créer un dossier pour chacune des résolutions avec cette même image.
 
