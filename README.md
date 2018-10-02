@@ -58,10 +58,15 @@ où *ic_warning_black_24dp* est le nom de l'icone.
 Dans Android Studio, le moyen le plus facile d'ajouter une icône est d'utiliser le menu File -> New -> Vector Asset. Le menu qui s'ouvre permet de choisir une icône personnalisée (à donner au format SVG ou PSD) ou de choisir une icône open source (*Clip ARt*) dans le style *Material Design*.
 
 
+Pour les images par défaut, il faut créer le dossier *./res/drawable/* et mettre l'image dedans. Puis il faudrait créer un dossier pour chacune des résolutions avec cette même image.
 
-Pour les images par défaut, il faut créer le dossier *./res/drawable/* et mettrel'image dedan. Puis il faudrait créer un dossier pour chacune des résolutions avec cette même image.
+![image-ressources](C:\Users\basilechatillon\Documents\jeremie\SYM\Labos\SYM-Labo1\image-ressources.jpg)
 
-![1538473153089](C:\Users\basilechatillon\AppData\Roaming\Typora\typora-user-images\1538473153089.png)
+On récupère l'image avec l'instruction:
+
+```java
+File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/perso.jpg");
+```
 
 PAS FINI!!
 
@@ -75,10 +80,30 @@ Appuyer sur le bouton back "quitte" l'application (retour à l'écran d'accueil)
 
 https://developer.android.com/training/implementing-navigation/temporal
 
+```java
+@Override
+public void onBackPressed() {
+    //super.onBackPressed();
+    Intent i = new Intent();
+    finish();
+}
+```
+
 ## Question 4
 
 ```
 On pourrait imaginer une situation où cette seconde Activity fournit un résultat (par exemple l’IMEI ou une autre chaîne de caractères) que nous voudrions récupérer dans l'Activity de départ. Comment procéder ?
+```
+
+```java
+@Override
+public void onBackPressed() {
+    //super.onBackPressed();
+    Intent i = new Intent();
+    i.putExtra(EXTRA_NON_DOWNLOADED_PAGES, notDownloaded);
+    setResult(RESULT_OK, i);
+    finish();
+}
 ```
 
 
